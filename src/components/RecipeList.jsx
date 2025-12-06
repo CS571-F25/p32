@@ -1,17 +1,23 @@
 import RecipeCard from "./RecipeCard";
+import { Row, Col } from "react-bootstrap";
 
 export default function RecipeList({ recipes, savedIds, onSave, onUnsave }) {
+  if (!recipes || recipes.length === 0) {
+    return null;
+  }
+
   return (
-    <div className="d-flex flex-wrap">
+    <Row>
       {recipes.map(r => (
-        <RecipeCard
-          key={r.id}
-          recipe={r}
-          saved={savedIds.includes(r.id)}
-          onSave={onSave}
-          onUnsave={onUnsave}
-        />
+        <Col key={r.id} xs={12} sm={6} md={4} lg={3} className="mb-3">
+          <RecipeCard
+            recipe={r}
+            saved={savedIds.includes(r.id)}
+            onSave={onSave}
+            onUnsave={onUnsave}
+          />
+        </Col>
       ))}
-    </div>
+    </Row>
   );
 }

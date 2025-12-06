@@ -1,16 +1,19 @@
-import {HashRouter,Routes,Route} from 'react-router'
-import './App.css'
-import MyNavbar from "./components/Navbar";
+import { HashRouter, Routes, Route } from "react-router";
+import { useState } from "react";
+
+import MyNavbar from "./components/MyNavbar";
+import Footer from "./components/Footer";
 
 import SearchPage from "./pages/SearchPage";
 import SavedPage from "./pages/SavedPage";
 import DetailsPage from "./pages/DetailsPage";
 import Security from "./components/Security";
+
 import recipes from "./recipes";
-import { useState } from "react";
 
+import "./styles/contrast.css";
 
-function App() {
+export default function App() {
   const [savedIds, setSavedIds] = useState([]);
 
   function handleSave(recipe) {
@@ -25,41 +28,53 @@ function App() {
 
   return (
     <HashRouter>
-      <MyNavbar />
+      <div className="app-container">
+        {/* Skip to main content link for accessibility */}
+        <a href="#main-content" className="skip-link">
+          Skip to main content
+        </a>
 
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <SearchPage
-              recipes={recipes}
-              savedIds={savedIds}
-              onSave={handleSave}
-              onUnsave={handleUnsave}
+        {/* 顶部导航栏 */}
+        <MyNavbar />
+
+        {/* 路由页面内容 */}
+        <main id="main-content" role="main">
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <SearchPage
+                  recipes={recipes}
+                  savedIds={savedIds}
+                  onSave={handleSave}
+                  onUnsave={handleUnsave}
+                />
+              }
             />
-          }
-        />
 
-        <Route
-          path="/saved"
-          element={
-            <SavedPage
-              recipes={recipes}
-              savedIds={savedIds}
-              onUnsave={handleUnsave}
+            <Route
+              path="/saved"
+              element={
+                <SavedPage
+                  recipes={recipes}
+                  savedIds={savedIds}
+                  onUnsave={handleUnsave}
+                />
+              }
             />
-          }
-        />
 
-        <Route
-          path="/details/:id"
-          element={<DetailsPage recipes={recipes} />}
-        />
+            <Route
+              path="/details/:id"
+              element={<DetailsPage recipes={recipes} />}
+            />
 
-        <Route path="/security" element={<Security />} />
-      </Routes>
+            <Route path="/security" element={<Security />} />
+          </Routes>
+        </main>
+
+        {/* 页脚 */}
+        <Footer />
+      </div>
     </HashRouter>
   );
 }
-
-export default App

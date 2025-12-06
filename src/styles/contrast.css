@@ -1,0 +1,93 @@
+/* WCAG AA compliant color contrast styles */
+body {
+  background-color: #ffffff !important;
+  color: #212529 !important;
+}
+
+/* Primary button with sufficient contrast */
+.btn-primary {
+  background-color: #0056b3 !important;
+  border-color: #0056b3 !important;
+  color: #ffffff !important;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: #004085 !important;
+  border-color: #004085 !important;
+  color: #ffffff !important;
+}
+
+/* Links with sufficient contrast */
+a {
+  color: #0056b3 !important;
+}
+
+a:hover,
+a:focus {
+  color: #004085 !important;
+  text-decoration: underline;
+}
+
+/* Success button with sufficient contrast */
+.btn-success {
+  background-color: #198754 !important;
+  border-color: #198754 !important;
+  color: #ffffff !important;
+}
+
+.btn-success:hover,
+.btn-success:focus {
+  background-color: #157347 !important;
+  border-color: #146c43 !important;
+  color: #ffffff !important;
+}
+
+/* Danger button with sufficient contrast */
+.btn-danger {
+  background-color: #dc3545 !important;
+  border-color: #dc3545 !important;
+  color: #ffffff !important;
+}
+
+.btn-danger:hover,
+.btn-danger:focus {
+  background-color: #bb2d3b !important;
+  border-color: #b02a37 !important;
+  color: #ffffff !important;
+}
+
+/* Dark button with sufficient contrast */
+.btn-dark {
+  background-color: #212529 !important;
+  border-color: #212529 !important;
+  color: #ffffff !important;
+}
+
+.btn-dark:hover,
+.btn-dark:focus {
+  background-color: #1c1f23 !important;
+  border-color: #1a1e21 !important;
+  color: #ffffff !important;
+}
+
+/* Badge colors with sufficient contrast */
+.badge.bg-info {
+  background-color: #0dcaf0 !important;
+  color: #000000 !important;
+}
+
+.badge.bg-secondary {
+  background-color: #6c757d !important;
+  color: #ffffff !important;
+}
+
+.badge.bg-success {
+  background-color: #198754 !important;
+  color: #ffffff !important;
+}
+
+.badge.bg-warning {
+  background-color: #ffc107 !important;
+  color: #000000 !important;
+}
