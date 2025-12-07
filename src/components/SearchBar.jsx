@@ -1,5 +1,9 @@
 import { useState } from "react";
-import { Form, Button, ButtonGroup } from "react-bootstrap";
+import { Form, ButtonGroup } from "react-bootstrap";
+import SearchContainer from "./SearchContainer";
+import Icon from "./Icon";
+import IconButton from "./IconButton";
+import ModeInfo from "./ModeInfo";
 
 export default function SearchBar({ onSearch, onModeChange, mode }) {
   const [text, setText] = useState("");
@@ -14,7 +18,7 @@ export default function SearchBar({ onSearch, onModeChange, mode }) {
 
   return (
     <div className="mt-3">
-      <div className="search-container p-4 rounded shadow-sm mb-4" style={{ background: 'white', border: '1px solid #dee2e6' }}>
+      <SearchContainer>
         <Form onSubmit={handleSubmit}>
           <Form.Group className="mb-3">
             <Form.Label htmlFor="ingredient-search" className="visually-hidden">
@@ -32,13 +36,18 @@ export default function SearchBar({ onSearch, onModeChange, mode }) {
                 size="lg"
                 style={{ border: '2px solid #dee2e6' }}
               />
-              <Button type="submit" variant="primary" size="lg">
-                <span style={{ marginRight: '6px' }}>🔍</span>
+              <IconButton 
+                type="submit" 
+                variant="primary" 
+                size="lg"
+                icon="search"
+                iconStyle={{ marginRight: '6px' }}
+              >
                 Search
-              </Button>
+              </IconButton>
             </div>
             <Form.Text id="search-help" className="text-muted">
-              <span style={{ marginRight: '4px' }}>💡</span>
+              <Icon name="lightbulb" style={{ marginRight: '4px' }} />
               Enter one or more ingredients separated by commas
             </Form.Text>
           </Form.Group>
@@ -46,41 +55,32 @@ export default function SearchBar({ onSearch, onModeChange, mode }) {
 
         <div className="mt-3 pt-3 border-top">
           <Form.Label htmlFor="search-mode" className="fw-semibold mb-2 d-block">
-            <span style={{ marginRight: '6px' }}>⚙️</span>
+            <Icon name="settings" style={{ marginRight: '6px' }} />
             Search Mode:
           </Form.Label>
           <ButtonGroup id="search-mode" role="group" aria-label="Search mode selection" className="w-100">
-            <Button
+            <IconButton
               variant={mode === "precise" ? "success" : "outline-success"}
               onClick={() => onModeChange("precise")}
               aria-pressed={mode === "precise"}
               className="flex-fill"
+              icon="precise"
             >
-              <span style={{ marginRight: '4px' }}>🎯</span>
               Precise
-            </Button>
-            <Button
+            </IconButton>
+            <IconButton
               variant={mode === "fuzzy" ? "success" : "outline-success"}
               onClick={() => onModeChange("fuzzy")}
               aria-pressed={mode === "fuzzy"}
               className="flex-fill"
+              icon="fuzzy"
             >
-              <span style={{ marginRight: '4px' }}>🔀</span>
               Fuzzy
-            </Button>
+            </IconButton>
           </ButtonGroup>
-          <div className="mt-3 p-3 rounded" style={{ background: '#f8f9fa', borderLeft: '4px solid #5cb85c' }}>
-            <small className="text-muted d-block">
-              <strong>{mode === "precise" ? "🎯 Precise Mode:" : "🔀 Fuzzy Mode:"}</strong>
-            </small>
-            <small className="text-muted">
-              {mode === "precise" 
-                ? "Recipes must contain all specified ingredients"
-                : "Recipes containing any specified ingredient will be shown"}
-            </small>
-          </div>
+          <ModeInfo mode={mode} />
         </div>
-      </div>
+      </SearchContainer>
     </div>
   );
 }

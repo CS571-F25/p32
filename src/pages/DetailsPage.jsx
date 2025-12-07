@@ -1,7 +1,8 @@
 import { useParams, Link } from "react-router";
-import AccessibleImage from "../components/AccessibleImage";
 import IngredientTag from "../components/IngredientTag";
-import { Container, Card, Button, Row, Col } from "react-bootstrap";
+import RecipeMeta from "../components/RecipeMeta";
+import IconButton from "../components/IconButton";
+import { Container, Card, Row, Col } from "react-bootstrap";
 
 export default function DetailsPage({ recipes }) {
   const { id } = useParams();
@@ -12,9 +13,9 @@ export default function DetailsPage({ recipes }) {
       <Container className="mt-4">
         <h1>Recipe Not Found</h1>
         <p>The recipe you are looking for does not exist.</p>
-        <Button as={Link} to="/" variant="primary">
+        <IconButton as={Link} to="/" variant="primary">
           Return to Search
-        </Button>
+        </IconButton>
       </Container>
     );
   }
@@ -23,25 +24,7 @@ export default function DetailsPage({ recipes }) {
     <Container className="mt-4">
       <div className="recipe-header mb-4">
         <h1 className="display-4 fw-bold mb-3">{recipe.name}</h1>
-        <div className="recipe-meta mb-3">
-          <span className="badge bg-info me-2">
-            <span style={{ marginRight: '4px' }}>🥘</span>
-            {recipe.ingredients.length} Ingredients
-          </span>
-        </div>
-      </div>
-
-      <div className="recipe-image-container mb-4">
-        <AccessibleImage
-          src="https://via.placeholder.com/600x400/4a90e2/ffffff?text=Recipe+Image"
-          alt={`Image of ${recipe.name}`}
-          className="img-fluid rounded shadow"
-          style={{ 
-            maxWidth: "100%", 
-            height: "auto",
-            border: "3px solid #dee2e6"
-          }}
-        />
+        <RecipeMeta ingredientCount={recipe.ingredients.length} />
       </div>
 
       <Row>
@@ -70,12 +53,12 @@ export default function DetailsPage({ recipes }) {
       </Row>
 
       <div className="mt-3">
-        <Button as={Link} to="/" variant="secondary" className="me-2">
+        <IconButton as={Link} to="/" variant="secondary" className="me-2">
           Back to Search
-        </Button>
-        <Button as={Link} to="/saved" variant="outline-secondary">
+        </IconButton>
+        <IconButton as={Link} to="/saved" variant="outline-secondary">
           View Saved Recipes
-        </Button>
+        </IconButton>
       </div>
     </Container>
   );

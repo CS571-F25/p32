@@ -29,15 +29,12 @@ export default function App() {
   return (
     <HashRouter>
       <div className="app-container">
-        {/* Skip to main content link for accessibility */}
         <a href="#main-content" className="skip-link">
           Skip to main content
         </a>
 
-        {/* 顶部导航栏 */}
         <MyNavbar />
 
-        {/* 路由页面内容 */}
         <main id="main-content" role="main">
           <Routes>
             <Route
@@ -72,7 +69,6 @@ export default function App() {
           </Routes>
         </main>
 
-        {/* 页脚 */}
         <Footer />
       </div>
     </HashRouter>

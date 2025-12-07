@@ -1,5 +1,6 @@
 import { Navbar, Nav, Container } from "react-bootstrap";
 import { Link, useLocation } from "react-router";
+import Icon from "./Icon";
 
 export default function MyNavbar() {
   const location = useLocation();
@@ -13,7 +14,7 @@ export default function MyNavbar() {
           className="navbar-brand-custom"
           aria-label="Recipe Finder Home"
         >
-          <span style={{ fontSize: '1.8rem', marginRight: '8px' }}>🍳</span>
+          <Icon name="recipe" style={{ fontSize: '1.8rem', marginRight: '8px' }} />
           Recipe Finder
         </Navbar.Brand>
 
@@ -27,7 +28,8 @@ export default function MyNavbar() {
               active={location.pathname === "/"}
               role="menuitem"
             >
-              🔍 Search
+              <Icon name="search" style={{ marginRight: '6px' }} />
+              Search
             </Nav.Link>
             <Nav.Link 
               as={Link} 
@@ -36,7 +38,8 @@ export default function MyNavbar() {
               active={location.pathname === "/saved"}
               role="menuitem"
             >
-              ❤️ Saved
+              <Icon name="saved" style={{ marginRight: '6px' }} />
+              Saved
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>

@@ -1,10 +1,8 @@
-/* WCAG AA compliant color contrast styles */
 body {
   background-color: #ffffff !important;
   color: #212529 !important;
 }
 
-/* Primary button with sufficient contrast */
 .btn-primary {
   background-color: #0056b3 !important;
   border-color: #0056b3 !important;
@@ -18,7 +16,6 @@ body {
   color: #ffffff !important;
 }
 
-/* Links with sufficient contrast */
 a {
   color: #0056b3 !important;
 }
@@ -29,7 +26,6 @@ a:focus {
   text-decoration: underline;
 }
 
-/* Success button with sufficient contrast */
 .btn-success {
   background-color: #198754 !important;
   border-color: #198754 !important;
@@ -43,7 +39,6 @@ a:focus {
   color: #ffffff !important;
 }
 
-/* Danger button with sufficient contrast */
 .btn-danger {
   background-color: #dc3545 !important;
   border-color: #dc3545 !important;
@@ -57,7 +52,6 @@ a:focus {
   color: #ffffff !important;
 }
 
-/* Dark button with sufficient contrast */
 .btn-dark {
   background-color: #212529 !important;
   border-color: #212529 !important;
@@ -71,7 +65,32 @@ a:focus {
   color: #ffffff !important;
 }
 
-/* Badge colors with sufficient contrast */
+.btn-secondary {
+  background-color: #495057 !important;
+  border-color: #495057 !important;
+  color: #ffffff !important;
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus {
+  background-color: #3d4146 !important;
+  border-color: #373b3e !important;
+  color: #ffffff !important;
+}
+
+.btn-outline-secondary {
+  color: #495057 !important;
+  border-color: #495057 !important;
+  background-color: transparent !important;
+}
+
+.btn-outline-secondary:hover,
+.btn-outline-secondary:focus {
+  background-color: #495057 !important;
+  border-color: #495057 !important;
+  color: #ffffff !important;
+}
+
 .badge.bg-info {
   background-color: #0dcaf0 !important;
   color: #000000 !important;

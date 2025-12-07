@@ -3,6 +3,8 @@ import RecipeList from "../components/RecipeList";
 import ModeBadge from "../components/ModeBadge";
 import FilterChips from "../components/FilterChips";
 import EmptyState from "../components/EmptyState";
+import PageHeader from "../components/PageHeader";
+import ResultsHeader from "../components/ResultsHeader";
 import { useState } from "react";
 import { Container } from "react-bootstrap";
 
@@ -35,16 +37,13 @@ export default function SearchPage({ recipes, savedIds, onSave, onUnsave }) {
 
   return (
     <Container className="mt-4">
-      <div className="page-header mb-4">
-        <h1 className="display-5 fw-bold mb-3">
-          <span style={{ marginRight: '12px' }}>🔍</span>
-          Search Recipes
-        </h1>
-        <p className="lead text-muted">
-          Discover delicious recipes by searching with your favorite ingredients
-        </p>
+      <PageHeader
+        icon="search"
+        title="Search Recipes"
+        subtitle="Discover delicious recipes by searching with your favorite ingredients"
+      >
         <ModeBadge mode={mode} />
-      </div>
+      </PageHeader>
 
       <SearchBar
         onSearch={handleSearch}
@@ -54,16 +53,8 @@ export default function SearchPage({ recipes, savedIds, onSave, onUnsave }) {
 
       <FilterChips filters={activeFilters} onRemove={handleRemoveFilter} />
 
-      {results.length > 0 && (
-        <div className="results-header mt-5 mb-4">
-          <h2 className="mb-0">
-            <span style={{ marginRight: '8px' }}>📋</span>
-            Results
-            <span className="badge bg-primary ms-2">{results.length}</span>
-          </h2>
-          <hr className="mt-3 mb-0" style={{ borderTop: '2px solid #dee2e6' }} />
-        </div>
-      )}
+      <ResultsHeader count={results.length} />
+
       {results.length === 0 ? (
         <EmptyState 
           message={activeFilters.length === 0 
